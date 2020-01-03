@@ -5,13 +5,14 @@ import argparse
 import signal
 import time
 from constants import *
-name_addr_dict = {
-    """
+"""
     To parse device option passed to command line, enter in device names (bed, window, shelf, etc)
     followed by an list consisting of their address. If you have a 'scene' like a bedroom consisting
     of multiple devices, enter them all into the list.
     Include 'all' as a list of all of your device addresses as well.
-    """
+"""
+name_addr_dict = {
+
 }
 
 ps = argparse.ArgumentParser(description="Govee Home Control Script")
@@ -23,6 +24,7 @@ ps.add_argument('--brightness', type=int)
 ps.add_argument('--color', nargs=3, type=int)
 ps.add_argument('--period', type=float)
 args = ps.parse_args()
+print(name_addr_dict)
 chosen_devices = name_addr_dict[args.device]
 if args.mode == "set":
     if args.brightness is not None:
