@@ -24,7 +24,6 @@ ps.add_argument('--brightness', type=int)
 ps.add_argument('--color', nargs=3, type=int)
 ps.add_argument('--period', type=float)
 args = ps.parse_args()
-print(name_addr_dict)
 chosen_devices = name_addr_dict[args.device]
 if args.mode == "set":
     if args.brightness is not None:
