@@ -18,26 +18,26 @@ ps = argparse.ArgumentParser(description="Govee Home Control Script")
 
 device_choices = device_names.append("all")
 ps.add_argument('mode')
-ps.add_argument('--device', default="all", type=str, choices=["bed", "window", "all"])
+ps.add_argument('--device', default="all", type=str, choices=device_choices)
 ps.add_argument('--brightness', type=int)
 ps.add_argument('--color', nargs=3, type=int)
 ps.add_argument('--period', type=float)
 args = ps.parse_args()
-devices = name_addr_dict[args.device]
+chosen_devices = name_addr_dict[args.device]
 if args.mode == "set":
     if args.brightness is not None:
         bright = args.brightness
-        for device in devices:
+        for device in chosen_devices:
             change_brightness(bright, device)
     if args.color is not None:
         colort = tuple(args.color)
-        for device in devices:
+        for device in chosen_devices:
             change_color(colort, device)
 elif args.mode == "strobe":
     latency = args.period
     change_brightness_both(255)
     while True:
-        for addr in devices.values():
+        for addr in chosen_devices:
             change_color(gen_rand_color(), addr)
         time.sleep(latency)
 if args.mode == "wakeup":
