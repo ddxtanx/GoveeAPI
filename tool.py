@@ -3,7 +3,6 @@ import time
 from math import floor
 import argparse
 import signal
-import time
 from constants import *
 """
     To parse device option passed to command line, enter in device names (bed, window, shelf, etc)
