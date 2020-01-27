@@ -37,3 +37,6 @@ Then the "then that" part should be a webhooks service. The URL should be your p
 If you add other endpoints to server.py, add them to IFTTT and you'll be all good!
 
 Then, to start up the server, just run `nohup python3 server.py > server_log 2>&1 &` to start up the webserver in the background, and enjoy the control you now posses over your Govee devices!
+
+# Random advice, from my experiences
+I've been using this basically every day to help me wakeup using the wakeup feature. I've found that sometimes the bluetooth controller just stops connecting after a couple of days of uptime. To combat this, I basically just setup a cronjob to restart my pi at 1AM every day, as well as on every reboot starting up the webserver. Since doing thos, I haven't experienced any connection failures. If they do continue, however, I'll try and examine more about why it's happening and commit a fix for it.
